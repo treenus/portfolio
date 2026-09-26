@@ -3,25 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple webpage about Burak Arslan's personal projects and achievements."> <!-- added a description for slight SEO optimization-->
-    <meta name="keywords" content="Burak Arslan, personal projects, achievements, portfolio"> <!-- added keywords for slight SEO optimization-->
+    <meta name="description" content="A personal portfolio showcasing Burak Arslan's projects and achievements.">
+    <meta name="keywords" content="Burak Arslan, personal projects, achievements, portfolio, developer">
     <meta property="og:title" content="Burak Arslan's Portfolio">
-    <meta property="og:description" content="A collection of side quests and projects.">
-    <meta property="og:image" content="assets/DruskiProfessional.jpeg">
-    <title>Beastmode</title>
+    <meta property="og:description" content="A collection of professional projects and experiences.">
+    <title>Burak Arslan - Portfolio</title>
 </head>
 <body>
-<h1>My name jeff</h1>
-<h1>Pushin P</h1>
-<h1>Druski is one of my biggest inspirations.</h1>
-<b1>This site is empty now, but I will make it more awesome soon. </b1>
+    <!-- Navigation Ribbon -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="hamburger-menu" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" aria-label="Go to homepage">Home</a></li>
+                <li><a href="#about" aria-label="Go to about section">About</a></li>
+                <li><a href="#projects" aria-label="Go to projects section">Projects</a></li>
+                <li><a href="#contact" aria-label="Go to contact section">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<table border="2" width="200" height="200">
-        <tr>
-            <td align="center" valign="middle">
-                <img src="assets/DruskiProfessional.jpeg" alt="Druski Professional Photo" width="100%" height="100%">
-            </td>
-        </tr>
-    </table>
+    <!-- Main Content -->
+    <main>
+        <!-- Homepage Section -->
+        <section id="home" aria-labelledby="home-heading">
+            <header>
+                <h1 id="home-heading">Welcome to My Portfolio</h1>
+            </header>
+            <div class="content">
+                <!-- TODO: Add homepage content in markdown format -->
+                <!-- Markdown content ideas:
+                     - Brief introduction about yourself
+                     - Professional tagline
+                     - Call-to-action buttons to other sections
+                -->
+                <p>Homepage content goes here...</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" aria-labelledby="about-heading">
+            <header>
+                <h1 id="about-heading">About Me</h1>
+            </header>
+            <div class="content">
+                <!-- TODO: Add about content in markdown format -->
+                <!-- Markdown content ideas:
+                     - Personal background
+                     - Skills and expertise
+                     - Professional journey
+                     - Interests and hobbies
+                -->
+                <p>About section content goes here...</p>
+                
+                <!-- Placeholder for photo -->
+                <figure>
+                    <img src="assets/profile-photo.jpg" alt="Profile photo of Burak Arslan" />
+                    <figcaption>Photo of Burak Arslan</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" aria-labelledby="projects-heading">
+            <header>
+                <h1 id="projects-heading">Projects Showcase</h1>
+            </header>
+            <div class="content">
+                <!-- TODO: Add project content in markdown format -->
+                <!-- Project 1 -->
+                <article class="project-item">
+                    <header>
+                        <h2>Project Title 1</h2>
+                        <p>Position/Role: Developer</p>
+                        <time datetime="2023">Year: 2023</time>
+                    </header>
+                    <div class="project-description">
+                        <!-- TODO: Add project description in markdown format -->
+                        <p>Description of the first project goes here...</p>
+                    </div>
+                    <div class="project-photos">
+                        <!-- TODO: Add project photos -->
+                        <p>Photos for Project 1 go here...</p>
+                    </div>
+                </article>
+
+                <!-- Divider between projects -->
+                <hr class="project-divider" />
+
+                <!-- Project 2 -->
+                <article class="project-item">
+                    <header>
+                        <h2>Project Title 2</h2>
+                        <p>Position/Role: Designer</p>
+                        <time datetime="2024">Year: 2024</time>
+                    </header>
+                    <div class="project-description">
+                        <!-- TODO: Add project description in markdown format -->
+                        <p>Description of the second project goes here...</p>
+                    </div>
+                    <div class="project-photos">
+                        <!-- TODO: Add project photos -->
+                        <p>Photos for Project 2 go here...</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" aria-labelledby="contact-heading">
+            <header>
+                <h1 id="contact-heading">Contact Me</h1>
+            </header>
+            <div class="content">
+                <!-- TODO: Add contact content in markdown format -->
+                <!-- Markdown content ideas:
+                     - Contact information
+                     - Contact form
+                     - Social media links
+                -->
+                <p>Contact section content goes here...</p>
+                
+                <!-- External link to LinkedIn -->
+                <p>
+                    <a href="https://www.linkedin.com/in/burakarslan1/" target="_blank" rel="noopener noreferrer">
+                        Connect with me on LinkedIn
+                    </a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Burak Arslan. All rights reserved.</p>
+    </footer>
 </body>
 </html>
