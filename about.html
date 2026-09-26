@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about Burak Arslan">
+    <meta name="keywords" content="Burak Arslan, about, biography">
+    <title>About - Burak Arslan Portfolio</title>
+</head>
+<body>
+    <!-- Navigation Ribbon -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <!-- Section links along the ribbon -->
+            <ul class="nav-links">
+                <li><a href="index.html" aria-label="Go to homepage">Home</a></li>
+                <li><a href="about.html" aria-label="Go to about section" aria-current="page">About</a></li>
+                <li><a href="projects.html" aria-label="Go to projects section">Projects</a></li>
+                <li><a href="contact.html" aria-label="Go to contact section">Contact</a></li>
+            </ul>
+            <!-- Hamburger icon button that toggles the dropdown -->
+            <div class="dropdown-nav">
+                <button class="hamburger-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Open navigation menu">
+                    <img src="assets/Hamburger_icon.webp" alt="" width="24" height="24" />
+                </button>
+                <ul class="dropdown-content" id="nav-dropdown" aria-label="Navigation options" hidden>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <main>
+        <section id="about" aria-labelledby="about-heading">
+            <header>
+                <h1 id="about-heading">About</h1>
+            </header>
+            <div class="content">
+                <p>I'm a software engineer with a few internships under my belt, and have experience with mobile development (e.g. Kotlin, Swift, React) as well as embedded systems like STM's cubeIDE and cubeMX.</p>
+                <p>I'm most intrigued by the interaction between humans and my products; and I thrive in a project with a physical element that I can iteratively improve.</p>
+                <p>In my free time, I enjoy tinkering with IoT devices and 3D printing furniture!</p>
+                <p>My journey was first at Veolectra, where I evaluated various client prototypes, identifying pain points. After that, I joined Modal Motors, where I began my CreatBot conversion work. Then I moved on to another role in Modal Motors, working on the FANUC Educational Deployment in order to facilitate teach pendant->EOAT communication.</p>
+                
+                <figure>
+                    <img src="assets/headshotBA.jpg" alt="Profile photo of Burak Arslan"/>
+                    <figcaption>Photo of Me</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Burak Arslan. All rights reserved.</p>
+    </footer>
+
+    <!-- Hamburger dropdown toggle -->
+    <script>
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const navDropdown = document.getElementById('nav-dropdown');
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+            hamburgerBtn.setAttribute('aria-expanded', String(!isOpen));
+            navDropdown.hidden = isOpen;
+        });
+    </script>
+</body>
+</html>

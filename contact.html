@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Burak Arslan">
+    <meta name="keywords" content="Burak Arslan, contact, email, social media">
+    <title>Contact - Burak Arslan Portfolio</title>
+</head>
+<body>
+    <!-- Navigation Ribbon -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <!-- Section links along the ribbon -->
+            <ul class="nav-links">
+                <li><a href="index.html" aria-label="Go to homepage">Home</a></li>
+                <li><a href="about.html" aria-label="Go to about section">About</a></li>
+                <li><a href="projects.html" aria-label="Go to projects section">Projects</a></li>
+                <li><a href="contact.html" aria-label="Go to contact section" aria-current="page">Contact</a></li>
+            </ul>
+            <!-- Hamburger icon button that toggles the dropdown -->
+            <div class="dropdown-nav">
+                <button class="hamburger-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Open navigation menu">
+                    <img src="assets/Hamburger_icon.webp" alt="" width="24" height="24" />
+                </button>
+                <ul class="dropdown-content" id="nav-dropdown" aria-label="Navigation options" hidden>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <main>
+        <section id="contact" aria-labelledby="contact-heading">
+            <header>
+                <h1 id="contact-heading">Contact Me</h1>
+            </header>
+            <div class="content">
+                <!-- TODO: Add contact content in markdown format -->
+                <!-- Markdown content ideas:
+                     - Contact information
+                     - Contact form
+                     - Social media links
+                -->
+                <p>Feel free to reach out to me through linkedin or email!</p>
+                <p>Email: barslan008@gmail.com</p>
+                <!-- External link to LinkedIn -->
+                <p>
+                    <a href="https://www.linkedin.com/in/burakarslan1/" target="_blank" rel="noopener noreferrer">
+                        Connect with me on LinkedIn
+                    </a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Burak Arslan. All rights reserved.</p>
+    </footer>
+
+    <!-- Hamburger dropdown toggle -->
+    <script>
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const navDropdown = document.getElementById('nav-dropdown');
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+            hamburgerBtn.setAttribute('aria-expanded', String(!isOpen));
+            navDropdown.hidden = isOpen;
+        });
+    </script>
+</body>
+</html>
