@@ -1,0 +1,14 @@
+/* 
+created in by burak arslan in collaboration with Kimi K3 & Qwen3 Coder Plus
+Colors from Wada Sanzo's Combinations (No. 276)
+^link (https://www.wada-sanzo-colors.com/combination/classic/276)
+background color may be reworked, thinking more lemon than lime
+*/
+:root{
+    --color-primary: #fdd4bd;
+    --color-secondary: #f37f94;
+    --color-background: #afd472;
+    --color-text: #111314;
+    --card-background: #758f4d;
+
+}
