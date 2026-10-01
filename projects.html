@@ -6,30 +6,32 @@
     <meta name="description" content="Projects by Burak Arslan">
     <meta name="keywords" content="Burak Arslan, projects, portfolio">
     <title>Projects - Burak Arslan Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Playfair Display & Red Hat Display font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+    <!-- produced in collaboration with Kimi K3 & Qwen3 Coder Plus-->
 </head>
 <body>
     <!-- Navigation Ribbon -->
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <!-- Section links along the ribbon -->
-            <ul class="nav-links">
-                <li><a href="index.html" aria-label="Go to homepage">Home</a></li>
-                <li><a href="about.html" aria-label="Go to about section">About</a></li>
-                <li><a href="projects.html" aria-label="Go to projects section" aria-current="page">Projects</a></li>
-                <li><a href="contact.html" aria-label="Go to contact section">Contact</a></li>
-            </ul>
             <!-- Hamburger icon button that toggles the dropdown -->
             <div class="dropdown-nav">
                 <button class="hamburger-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Open navigation menu">
                     <img src="assets/Hamburger_icon.webp" alt="" width="24" height="24" />
                 </button>
                 <ul class="dropdown-content" id="nav-dropdown" aria-label="Navigation options" hidden>
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+            <!-- Homepage link next to hamburger -->
+            <ul class="nav-links">
+                <li><a href="index.html" aria-label="Go to homepage">Home</a></li>
+            </ul>
         </div>
     </nav>
 

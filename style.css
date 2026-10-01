@@ -10,5 +10,180 @@ background color may be reworked, thinking more lemon than lime
     --color-background: #afd472;
     --color-text: #111314;
     --card-background: #758f4d;
+    --backsplash-color: #f6f7a3;
 
+}
+
+/* Base styles */
+body {
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  margin: 0;
+  padding: 20px;
+  border-radius: 1.5mm;
+}
+
+/* Navigation styles */
+.nav-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--backsplash-color);
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 8px 12px;
+  border-radius: 1.5mm;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  background-color: var(--color-primary);
+}
+
+.hamburger-btn {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 1.5mm;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  background-color: var(--backsplash-color);
+  border-radius: 1.5mm;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  min-width: 150px;
+}
+
+.dropdown-content li {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--color-primary);
+}
+
+/* Headers and project titles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.project_title {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Hamburger button */
+.hamburger {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 1.5mm;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: var(--color-text);
+  border-radius: 1.5mm;
+  transition: 0.3s;
+}
+
+/* Rounded corners for all elements */
+* {
+  border-radius: 1.5mm;
+}
+
+/* Card styling */
+.card {
+  background-color: var(--card-background);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 1.5mm;
+}
+
+/* Links */
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 1.5mm;
+  cursor: pointer;
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: var(--color-secondary);
 }

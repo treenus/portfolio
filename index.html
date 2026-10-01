@@ -9,31 +9,32 @@
     <meta property="og:description" content="A collection of professional projects and experiences.">
     <title>Burak Arslan's Portfolio - Home</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Playfair Display & Red Hat Display font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
     <!-- produced in collaboration with Kimi K3 & Qwen3 Coder Plus-->
 </head>
 <body>
     <!-- Navigation Ribbon -->
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <!-- Section links along the ribbon -->
-            <ul class="nav-links">
-                <li><a href="index.html" aria-label="Go to homepage" aria-current="page">Home</a></li>
-                <li><a href="about.html" aria-label="Go to about section">About</a></li>
-                <li><a href="projects.html" aria-label="Go to projects section">Projects</a></li>
-                <li><a href="contact.html" aria-label="Go to contact section">Contact</a></li>
-            </ul>
             <!-- Hamburger icon button that toggles the dropdown -->
             <div class="dropdown-nav">
                 <button class="hamburger-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Open navigation menu">
                     <img src="assets/Hamburger_icon.webp" alt="" width="24" height="24" />
                 </button>
                 <ul class="dropdown-content" id="nav-dropdown" aria-label="Navigation options" hidden>
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+            <!-- Homepage link next to hamburger -->
+            <ul class="nav-links">
+                <li><a href="index.html" aria-label="Go to homepage" aria-current="page">Home</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -41,7 +42,7 @@
     <main>
         <section id="home" aria-labelledby="home-heading">
             <header>
-                <h1 id="home-heading">Welcome to Portfolio 1.0!</h1>
+                <h1 id="home-heading">Welcome to Portfolio 1.5!</h1>
             </header>
             <div class="content">
                 <p>Somewhat accomplished SWE with a passion for creating innovative solutions.</p>

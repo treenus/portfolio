@@ -6,30 +6,32 @@
     <meta name="description" content="Learn more about Burak Arslan">
     <meta name="keywords" content="Burak Arslan, about, biography">
     <title>About - Burak Arslan Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Playfair Display & Red Hat Display font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+    <!-- produced in collaboration with Kimi K3 & Qwen3 Coder Plus-->
 </head>
 <body>
     <!-- Navigation Ribbon -->
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <!-- Section links along the ribbon -->
-            <ul class="nav-links">
-                <li><a href="index.html" aria-label="Go to homepage">Home</a></li>
-                <li><a href="about.html" aria-label="Go to about section" aria-current="page">About</a></li>
-                <li><a href="projects.html" aria-label="Go to projects section">Projects</a></li>
-                <li><a href="contact.html" aria-label="Go to contact section">Contact</a></li>
-            </ul>
             <!-- Hamburger icon button that toggles the dropdown -->
             <div class="dropdown-nav">
                 <button class="hamburger-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Open navigation menu">
                     <img src="assets/Hamburger_icon.webp" alt="" width="24" height="24" />
                 </button>
                 <ul class="dropdown-content" id="nav-dropdown" aria-label="Navigation options" hidden>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+            <!-- Homepage link next to hamburger -->
+            <ul class="nav-links">
+                <li><a href="index.html" aria-label="Go to homepage">Home</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -40,7 +42,7 @@
                 <h1 id="about-heading">About</h1>
             </header>
             <div class="content">
-                <p>I'm a software engineer with a few internships under my belt, and have experience with mobile development (e.g. Kotlin, Swift, React) as well as embedded systems like STM's cubeIDE and cubeMX.</p>
+                <p>I'm a software engineer with a few internships under my belt, and have experience with mobile development (e.g. Kotlin, Swift, React) as well as embedded systems like STM's cubeIDE and cubeMX. I've also worked on ESP32-based projects focused on IoT applications, configured network cameras for livestreaming, and completed prototypes with functional if not aesthetically pleasing enclosures ready for production envirionments.</p>
                 <p>I'm most intrigued by the interaction between humans and my products; and I thrive in a project with a physical element that I can iteratively improve.</p>
                 <p>In my free time, I enjoy tinkering with IoT devices and 3D printing furniture!</p>
                 <p>My journey was first at Veolectra, where I evaluated various client prototypes, identifying pain points. After that, I joined Modal Motors, where I began my CreatBot conversion work. Then I moved on to another role in Modal Motors, working on the FANUC Educational Deployment in order to facilitate teach pendant->EOAT communication.</p>
