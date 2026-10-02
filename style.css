@@ -154,11 +154,54 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1.5mm;
 }
 
-/* Card styling */
-.card {
+
+
+/* Project photo container */
+.photo-container {
+  text-align: center;
+  margin: 15px 0;
+}
+
+/* Project images */
+.project-item img {
+  width: 48%; /* Two images with spacing */
+  height: auto;
+  border-radius: 1.5mm;
+  margin: 0 1%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+/* On smaller screens, stack images */
+@media screen and (max-width: 768px) {
+  .project-item img {
+    width: 98%;
+    margin: 1%;
+  }
+}
+
+/* Project item styling */
+.project-item {
   background-color: var(--card-background);
-  padding: 15px;
-  margin: 10px 0;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 1.5mm;
+}
+
+.project-description {
+  margin: 15px 0;
+}
+
+.project-photos {
+  margin: 15px 0;
+}
+
+/* Project divider */
+.project-divider {
+  border: none;
+  height: 2px;
+  background-color: var(--backsplash-color);
+  margin: 30px 0;
   border-radius: 1.5mm;
 }
 
@@ -186,4 +229,24 @@ button {
 
 button:hover {
   background-color: var(--color-secondary);
+}
+
+/* Profile image in about page */
+.content img {
+  max-width: 98%;
+  height: auto;
+  border-radius: 1.5mm;
+  margin: 1%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Specific styling for the LinkedIn link in contact page */
+.content a[href*="linkedin"] {
+  color: var(--color-secondary);
+}
+
+.content a[href*="linkedin"]:hover {
+  color: var(--color-primary);
 }
