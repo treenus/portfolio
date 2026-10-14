@@ -1,5 +1,5 @@
 /* 
-created in by burak arslan in collaboration with Kimi K3 & Qwen3 Coder Plus
+created in by burak arslan in collaboration with Kimi K3 & Qwen3 Coder Plus -> replaced by 3.8 Max
 Colors from Wada Sanzo's Combinations (No. 276)
 ^link (https://www.wada-sanzo-colors.com/combination/classic/276)
 background color may be reworked, thinking more lemon than lime
@@ -24,21 +24,31 @@ body {
   color: var(--color-text);
   margin: 0;
   padding: 20px;
+  padding-bottom: 64px; /* room for the fixed footer */
   border-radius: 1.5mm;
 }
 
-/* Navigation styles */
+/* Navigation styles (mobile-first grid layout) */
 .nav-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "menu links";
   align-items: center;
+  gap: 15px;
   padding: 10px 20px;
   background-color: var(--backsplash-color);
   margin-bottom: 20px;
-  gap: 15px;
+}
+
+.dropdown-nav {
+  grid-area: menu;
+  position: relative; /* anchors the dropdown menu below the button */
 }
 
 .nav-links {
+  grid-area: links;
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -78,8 +88,8 @@ body {
 
 .dropdown-content {
   position: absolute;
-  top: 60px;
-  left: 20px;
+  top: calc(100% + 6px); /* sits just below the hamburger button */
+  left: 0;
   background-color: var(--backsplash-color);
   border-radius: 1.5mm;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -105,6 +115,19 @@ body {
 
 .dropdown-content a:hover {
   background-color: var(--color-primary);
+}
+
+/* Larger screens: give the nav bar more room to breathe */
+@media screen and (min-width: 600px) {
+  .nav-container {
+    padding: 12px 32px;
+    gap: 24px;
+  }
+
+  .nav-links {
+    justify-content: flex-end; /* push links toward the right edge */
+    gap: 20px;
+  }
 }
 
 /* Headers and project titles */
@@ -156,27 +179,26 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-/* Project photo container */
+/* Project photo container: mobile-first, one image per row */
 .photo-container {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
   margin: 15px 0;
 }
 
 /* Project images */
 .project-item img {
-  width: 48%; /* Two images with spacing */
+  width: 100%;
   height: auto;
   border-radius: 1.5mm;
-  margin: 0 1%;
-  vertical-align: top;
-  display: inline-block;
+  display: block;
 }
 
-/* On smaller screens, stack images */
-@media screen and (max-width: 768px) {
-  .project-item img {
-    width: 98%;
-    margin: 1%;
+/* Wider screens: pair the photos up in two columns */
+@media screen and (min-width: 600px) {
+  .photo-container {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -240,6 +262,69 @@ button:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Page content: mobile-first single-column grid, text centered on every page */
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Center each page's main heading too */
+main section > header {
+  text-align: center;
+}
+
+/* Wider screens: keep the reading column narrow and centered */
+@media screen and (min-width: 600px) {
+  .content {
+    gap: 8px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* About page: stacked on mobile, text + photo side by side on wider screens */
+.about-columns {
+  gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-columns {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+    max-width: 1000px; /* two columns need more room than the default column */
+  }
+
+  .about-columns figure {
+    margin: 0;
+  }
+}
+
+/* Page sections: centered grid so headings and content line up */
+main section {
+  display: grid;
+  justify-items: center;
+}
+/* Qwen3.8 Max prompt: let's actually do this for all of the pages, and remove the custom footer class to just style the <footer> - let's find the bottom of the browser window and stick a 50% opacity grey box around the footer text and drop it to the bottom-left of the browser window (not the page. e.g. when scrolling the footer should always be in teh same place, almost as if it's on a layer above the actual content)
+/* Footer: fixed to the bottom-left corner of the browser window,
+   floating above the page content in a 50%-opacity grey box */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 8px 16px;
+  border-radius: 0 1.5mm 0 0;
+}
+
+footer p {
+  margin: 0;
 }
 
 /* Specific styling for the LinkedIn link in contact page */
