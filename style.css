@@ -7,6 +7,7 @@ background color may be reworked, thinking more lemon than lime
 :root{
     --color-primary: #fdd4bd;
     --color-secondary: #f37f94;
+    --color-accent: #930B24;
     --color-background: #afd472;
     --color-text: #111314;
     --card-background: #758f4d;
@@ -229,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Links */
 a {
-  color: var(--color-secondary);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
@@ -329,7 +330,7 @@ footer p {
 
 /* Specific styling for the LinkedIn link in contact page */
 .content a[href*="linkedin"] {
-  color: var(--color-secondary);
+  color: var(--color-accent);
 }
 
 .content a[href*="linkedin"]:hover {
