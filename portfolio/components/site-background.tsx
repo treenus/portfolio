@@ -8,7 +8,9 @@ import DotField from "@/components/DotField"
 const SHARED = {
   dotRadius: 1.5,
   dotSpacing: 14,
-  cursorRadius: 240,
+  // Lens radius: the area around the pointer that bulges. Was 240, which read as
+  // oversized next to the cursor itself.
+  cursorRadius: 110,
   bulgeStrength: 0.6,
   glowRadius: 160,
   pattern: "grid",

@@ -1,0 +1,19 @@
+# Netlify build configuration.
+#
+# The repo root is NOT a Next.js app — the app lives in `portfolio/`. Without an
+# explicit `base`, Netlify runs `npm run build` at the root, finds no package.json,
+# and the deploy fails.
+[build]
+  base = "portfolio"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next 16 requires Node 20.8+.
+  NODE_VERSION = "20"
+
+# No `[[plugins]]` entry on purpose: Netlify auto-detects Next.js and applies the
+# Next runtime itself. Declaring `@netlify/plugin-nextjs` here without it being in
+# portfolio/package.json would make the build try to install a plugin that isn't
+# locked, which is a new failure mode rather than a fix. If you later want it
+# pinned, add it with `npx netlify plugins:install @netlify/plugin-nextjs`.
