@@ -12,8 +12,17 @@
   # Next 16 requires Node 20.8+.
   NODE_VERSION = "20"
 
-# No `[[plugins]]` entry on purpose: Netlify auto-detects Next.js and applies the
-# Next runtime itself. Declaring `@netlify/plugin-nextjs` here without it being in
-# portfolio/package.json would make the build try to install a plugin that isn't
-# locked, which is a new failure mode rather than a fix. If you later want it
-# pinned, add it with `npx netlify plugins:install @netlify/plugin-nextjs`.
+# The Next.js Runtime is REQUIRED, not optional.
+#
+# Symptom without it: the build succeeds and the deploy "works", but every route
+# returns Netlify's generic 404 (not app/not-found.tsx). That is because
+# `publish = ".next"` then ships the raw build output, which contains no
+# index.html at its root — only server/, static/, etc. Netlify's static server
+# has nothing to serve, so requests never reach Next.
+#
+# This plugin is what turns the build output into a serverless function and
+# rewrites routes to it. Netlify auto-installs it when it detects Next, but that
+# detection is unreliable in a monorepo where `base` points at a subdirectory.
+# Declaring it here is explicit and idempotent.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
