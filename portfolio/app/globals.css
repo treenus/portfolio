@@ -1,9 +1,11 @@
+/*Created by Burak Arslan in collaboration with Qwen 3.8 Max & Deepseek 4.1 Flash */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
-
+/* */
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: var(--font-sans);
@@ -50,6 +52,8 @@
 :root {
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
+    /* Legacy --backsplash-color from the original Wada Sanzo No. 276 palette */
+    --backsplash: #f6f7a3;
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
@@ -123,6 +127,13 @@
   body {
     @apply bg-background text-foreground;
     }
+
+  /* DotField's canvas is transparent between dots, so the backing colour shows
+     through the gaps. Light mode uses the legacy eggshell backsplash. */
+  :root:not(.dark) body {
+    background-color: var(--backsplash);
+    }
+
   html {
     @apply font-sans;
     }
