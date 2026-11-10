@@ -14,3 +14,6 @@ This is the source code for my personal portfolio website.
 ## Deployment
 
 This site is deployed on Netlify and handles routing automatically.
+
+## Dev
+this site should be tested locally with 'npm run dev' post Next.js implementation. old html will be ported. 
