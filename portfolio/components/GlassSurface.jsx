@@ -299,8 +299,8 @@ const GlassSurface = ({
   mixBlendMode = 'difference',
   refraction = true,
   renderer = 'auto',
-  backdrop,
-  shape,
+  backdrop = null,
+  shape = null,
   className = '',
   style = {}
 }) => {

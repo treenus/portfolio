@@ -29,14 +29,65 @@
   z-index: 1;
 }
 
+/* Theme tokens.
+   The upstream file used `light-dark(...)`, but Tailwind v4's Lightning CSS
+   compiles that into `var(--lightningcss-light, A) var(--lightningcss-dark, B)`,
+   which resolves to two concatenated colours and is therefore an invalid
+   `background` value. These explicit variables do the same job reliably. */
+.glass-surface {
+  --gs-bg: hsl(0 0% 100% / var(--glass-frost, 0));
+  --gs-edge: color-mix(in oklch, black, transparent 85%);
+  --gs-edge-soft: color-mix(in oklch, black, transparent 90%);
+  /* Kept deliberately low so the dot field's glow reads through the panel. */
+  --gs-fallback-bg: hsl(0 0% 100% / calc(0.04 + var(--glass-frost, 0) * 0.22));
+  --gs-inset-top: hsl(0 0% 100% / 0.85);
+  --gs-inset-bottom: hsl(0 0% 100% / 0.35);
+  --gs-line: color-mix(in oklch, black, transparent 88%);
+  --gs-glow: color-mix(in oklch, white, transparent 72%);
+  --gs-sheen-a: hsl(0 0% 100% / 0.42);
+  --gs-sheen-b: hsl(0 0% 100% / 0.18);
+  --gs-rim-1: hsl(0 0% 100% / 0.7);
+  --gs-rim-2: hsl(0 0% 100% / 0.1);
+  --gs-rim-3: hsl(0 0% 100% / 0.08);
+  --gs-rim-4: hsl(0 0% 100% / 0.42);
+  --gs-solid-bg: hsl(0 0% 100% / 0.72);
+  --gs-focus: #007aff;
+  /* Edge weights: spread / inset-glow spread. Slimmed down in dark mode. */
+  --gs-border-w: 2px;
+  --gs-border-o: 1px;
+  --gs-glow-w: 12px;
+  --gs-glow-o: 3px;
+}
+
+.dark .glass-surface {
+  --gs-bg: hsl(0 0% 0% / var(--glass-frost, 0));
+  --gs-edge: color-mix(in oklch, white, transparent 65%);
+  --gs-edge-soft: color-mix(in oklch, white, transparent 85%);
+  --gs-fallback-bg: hsl(0 0% 8% / calc(0.28 + var(--glass-frost, 0) * 0.5));
+  --gs-inset-top: hsl(0 0% 100% / 0.3);
+  --gs-inset-bottom: hsl(0 0% 100% / 0.08);
+  --gs-line: color-mix(in oklch, white, transparent 72%);
+  --gs-glow: color-mix(in oklch, white, transparent 90%);
+  --gs-sheen-a: hsl(0 0% 100% / 0.14);
+  --gs-sheen-b: hsl(0 0% 100% / 0.05);
+  --gs-rim-1: hsl(0 0% 100% / 0.34);
+  --gs-rim-2: hsl(0 0% 100% / 0.03);
+  --gs-rim-3: hsl(0 0% 100% / 0.02);
+  --gs-rim-4: hsl(0 0% 100% / 0.18);
+  --gs-solid-bg: hsl(0 0% 12% / 0.72);
+  --gs-focus: #0a84ff;
+  --gs-border-w: 1px;
+  --gs-border-o: 0.5px;
+  --gs-glow-w: 7px;
+  --gs-glow-o: 1.5px;
+}
+
 .glass-surface--svg {
-  background: light-dark(hsl(0 0% 100% / var(--glass-frost, 0)), hsl(0 0% 0% / var(--glass-frost, 0)));
+  background: var(--gs-bg);
   backdrop-filter: var(--filter-id, url(#glass-filter)) saturate(var(--glass-saturation, 1));
   box-shadow:
-    0 0 2px 1px light-dark(color-mix(in oklch, black, transparent 85%), color-mix(in oklch, white, transparent 65%))
-      inset,
-    0 0 10px 4px light-dark(color-mix(in oklch, black, transparent 90%), color-mix(in oklch, white, transparent 85%))
-      inset,
+    0 0 2px 1px var(--gs-edge) inset,
+    0 0 10px 4px var(--gs-edge-soft) inset,
     0px 4px 16px rgba(17, 17, 26, 0.05),
     0px 8px 24px rgba(17, 17, 26, 0.05),
     0px 16px 56px rgba(17, 17, 26, 0.05),
@@ -63,31 +114,24 @@
 }
 
 .glass-surface__frame {
-  background: light-dark(hsl(0 0% 100% / var(--glass-frost, 0)), hsl(0 0% 0% / var(--glass-frost, 0)));
+  background: var(--gs-bg);
   box-shadow:
-    0 0 2px 1px light-dark(color-mix(in oklch, black, transparent 85%), color-mix(in oklch, white, transparent 65%))
-      inset,
-    0 0 10px 4px light-dark(color-mix(in oklch, black, transparent 90%), color-mix(in oklch, white, transparent 85%))
-      inset,
+    0 0 2px 1px var(--gs-edge) inset,
+    0 0 10px 4px var(--gs-edge-soft) inset,
     0px 4px 16px rgba(17, 17, 26, 0.05) inset,
     0px 8px 24px rgba(17, 17, 26, 0.05) inset,
     0px 16px 56px rgba(17, 17, 26, 0.05) inset;
 }
 
 .glass-surface--fallback {
-  background: light-dark(
-    hsl(0 0% 100% / calc(0.12 + var(--glass-frost, 0) * 0.5)),
-    hsl(0 0% 100% / calc(0.04 + var(--glass-frost, 0) * 0.3))
-  );
+  background: var(--gs-fallback-bg);
   -webkit-backdrop-filter: blur(12px) saturate(calc(var(--glass-saturation, 1) * 1.4)) brightness(1.04);
   backdrop-filter: blur(12px) saturate(calc(var(--glass-saturation, 1) * 1.4)) brightness(1.04);
   box-shadow:
-    inset 0 1px 0 0 light-dark(hsl(0 0% 100% / 0.85), hsl(0 0% 100% / 0.3)),
-    inset 0 -1px 0 0 light-dark(hsl(0 0% 100% / 0.35), hsl(0 0% 100% / 0.08)),
-    0 0 2px 1px light-dark(color-mix(in oklch, black, transparent 88%), color-mix(in oklch, white, transparent 72%))
-      inset,
-    0 0 12px 3px light-dark(color-mix(in oklch, white, transparent 72%), color-mix(in oklch, white, transparent 90%))
-      inset,
+    inset 0 var(--gs-border-o) 0 0 var(--gs-inset-top),
+    inset 0 calc(var(--gs-border-o) * -1) 0 0 var(--gs-inset-bottom),
+    0 0 var(--gs-border-w) var(--gs-border-o) var(--gs-line) inset,
+    0 0 var(--gs-glow-w) var(--gs-glow-o) var(--gs-glow) inset,
     0px 4px 16px rgba(17, 17, 26, 0.06),
     0px 8px 24px rgba(17, 17, 26, 0.06),
     0px 16px 56px rgba(17, 17, 26, 0.06);
@@ -104,22 +148,16 @@
 .glass-surface__sheen {
   background: linear-gradient(
     135deg,
-    light-dark(hsl(0 0% 100% / 0.42), hsl(0 0% 100% / 0.14)) 0%,
+    var(--gs-sheen-a) 0%,
     transparent 42%,
     transparent 64%,
-    light-dark(hsl(0 0% 100% / 0.18), hsl(0 0% 100% / 0.05)) 100%
+    var(--gs-sheen-b) 100%
   );
 }
 
 .glass-surface__rim {
   padding: 3px;
-  background: linear-gradient(
-    150deg,
-    light-dark(hsl(0 0% 100% / 0.7), hsl(0 0% 100% / 0.34)),
-    light-dark(hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.03)) 45%,
-    light-dark(hsl(0 0% 100% / 0.08), hsl(0 0% 100% / 0.02)) 60%,
-    light-dark(hsl(0 0% 100% / 0.42), hsl(0 0% 100% / 0.18))
-  );
+  background: linear-gradient(150deg, var(--gs-rim-1), var(--gs-rim-2) 45%, var(--gs-rim-3) 60%, var(--gs-rim-4));
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -140,29 +178,29 @@
 
 .glass-surface--svg .glass-surface__line,
 .glass-surface--webgl .glass-surface__line {
-  background: light-dark(color-mix(in oklch, black, transparent 85%), color-mix(in oklch, white, transparent 65%));
+  background: var(--gs-edge);
 }
 
 .glass-surface--svg .glass-surface__glow,
 .glass-surface--webgl .glass-surface__glow {
-  background: light-dark(color-mix(in oklch, black, transparent 90%), color-mix(in oklch, white, transparent 85%));
+  background: var(--gs-edge-soft);
 }
 
 .glass-surface--fallback .glass-surface__line {
-  background: light-dark(color-mix(in oklch, black, transparent 88%), color-mix(in oklch, white, transparent 72%));
+  background: var(--gs-line);
 }
 
 .glass-surface--fallback .glass-surface__glow {
-  background: light-dark(color-mix(in oklch, white, transparent 72%), color-mix(in oklch, white, transparent 90%));
+  background: var(--gs-glow);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass-surface--fallback {
-    background: light-dark(hsl(0 0% 100% / 0.72), hsl(0 0% 12% / 0.72));
+    background: var(--gs-solid-bg);
   }
 }
 
 .glass-surface:focus-visible {
-  outline: 2px solid light-dark(#007aff, #0a84ff);
+  outline: 2px solid var(--gs-focus);
   outline-offset: 2px;
 }

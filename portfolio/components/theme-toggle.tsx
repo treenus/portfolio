@@ -13,11 +13,23 @@ export function ThemeToggle() {
 
   const isDark = resolvedTheme !== "light"
 
+  // Until mounted, `resolvedTheme` is unknown on the client AND on the server.
+  // Every theme-dependent attribute must use the same value in both passes or
+  // React reports a hydration mismatch.
+  const label = mounted
+    ? isDark
+      ? "Switch to light mode"
+      : "Switch to dark mode"
+    : "Toggle theme"
+
   return (
     <button
       type="button"
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={label}
+      onClick={() => {
+        if (!mounted) return
+        setTheme(isDark ? "light" : "dark")
+      }}
       className="inline-flex size-9 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
     >
       {mounted ? (
