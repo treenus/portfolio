@@ -5,6 +5,12 @@ import { gsap } from 'gsap';
 
 import './AccordionGallery.css';
 
+/**
+ * `link` is optional: the component renders an <a> when present and a <div>
+ * otherwise. Without this annotation TypeScript infers the `items` prop type
+ * from this default, making `link` required for every caller.
+ * @type {{ image: string, label: string, link?: string }[]}
+ */
 const DEFAULT_ITEMS = [
   { image: 'https://picsum.photos/id/1015/900/1200', label: 'Canyon', link: '#' },
   { image: 'https://picsum.photos/id/1018/900/1200', label: 'Ridgeline', link: '#' },
