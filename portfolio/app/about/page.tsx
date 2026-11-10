@@ -21,13 +21,15 @@ export default function AboutPage() {
           saturation={1.2}
           className="mt-8"
         >
-          <div className="flex w-full flex-col gap-6 text-center text-base/snug text-foreground/80">
+          <div className="flex w-full flex-col gap-6 p-6 text-center text-base/snug text-foreground/80">
             {/* The headshot is a wide landscape crop, so it sits above the copy rather
                 than competing for a column. `h-auto` keeps its ratio.
 
-                GlassSurface's own `.glass-surface__content` already adds 0.5rem (8px) of
-                padding, so the figure sits a uniform 8px inside the panel. Concentric
-                radius = outer (24px) - gap (8px) = 16px. Keep these in sync if either changes. */}
+                Padding model: GlassSurface's `.glass-surface__content` contributes 8px,
+                plus this wrapper's `p-6` (24px) = 32px total inset. All three pages use
+                `p-6` so every card follows the same rule. The image keeps a 16px radius:
+                since the inset (32px) exceeds the card radius (24px), the two corners are
+                no longer concentric, so a softer inner radius reads better than clamping to 0. */}
             <figure className="flex flex-col items-center gap-2">
               <img
                 src="/assets/headshotBA.jpg"

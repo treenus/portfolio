@@ -24,7 +24,7 @@ export default function Page() {
           saturation={1.2}
           className="mt-8"
         >
-          <div className="space-y-6 px-6 py-8 text-center text-base/snug text-foreground/80">
+          <div className="space-y-6 p-6 text-center text-base/snug text-foreground/80">
             <p>Somewhat accomplished SWE with a passion for creating innovative solutions.</p>
             <p>Explore my projects, learn about my journey, and feel free to reach out!</p>
             <p>
