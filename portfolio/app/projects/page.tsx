@@ -94,7 +94,7 @@ export default function ProjectsPage() {
                   expandRatio={0.55}
                   duration={0.5}
                   showLabels
-                  grayscale={false}
+                  grayscale
                   accentColor="var(--color-accent, #930b24)"
                 />
               </div>

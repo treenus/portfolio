@@ -145,19 +145,20 @@
   pointer-events: none;
 }
 
+/* No diagonal sheen. Upstream paints a 135deg gradient that brightens the
+   top-left and bottom-right corners, which reads as a light source hitting each
+   card rather than as glass. Removing it keeps the frost level uniform, so the
+   only light showing through a panel is whatever the page background emits
+   (here, the DotField glow). */
 .glass-surface__sheen {
-  background: linear-gradient(
-    135deg,
-    var(--gs-sheen-a) 0%,
-    transparent 42%,
-    transparent 64%,
-    var(--gs-sheen-b) 100%
-  );
+  background: none;
 }
 
+/* Uniform edge highlight. The original 150deg gradient brightened the corners;
+   a single value keeps the rim even all the way around. */
 .glass-surface__rim {
   padding: 3px;
-  background: linear-gradient(150deg, var(--gs-rim-1), var(--gs-rim-2) 45%, var(--gs-rim-3) 60%, var(--gs-rim-4));
+  background: var(--gs-rim-1);
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);

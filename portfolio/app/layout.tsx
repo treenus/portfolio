@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SiteBackground } from "@/components/site-background"
+import { SiteFooter } from "@/components/site-footer"
 import { SiteNav } from "@/components/site-nav"
 import { cn } from "@/lib/utils";
 
@@ -42,6 +43,9 @@ export default function RootLayout({
             <SiteNav />
           </header>
           <div className="relative z-10">{children}</div>
+          <div className="fixed bottom-4 left-4 z-50">
+            <SiteFooter />
+          </div>
         </ThemeProvider>
       </body>
     </html>
