@@ -331,7 +331,3 @@ footer p {
 .content a[href*="linkedin"] {
   color: var(--color-accent);
 }
-
-.content a[href*="linkedin"]:hover {
-  color: var(--color-primary);
-}
