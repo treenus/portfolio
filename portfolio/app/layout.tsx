@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
 
 import "./globals.css"
@@ -6,6 +7,14 @@ import { SiteBackground } from "@/components/site-background"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteNav } from "@/components/site-nav"
 import { cn } from "@/lib/utils";
+
+// Without a metadata export Next emits no <title> at all, which fails
+// Lighthouse's "document does not have a title" accessibility audit.
+export const metadata: Metadata = {
+  title: "burak arslan portfolio website",
+  description:
+    "Portfolio of Burak Arslan, a software engineer focused on mobile development, embedded systems, and IoT.",
+}
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'})
 
