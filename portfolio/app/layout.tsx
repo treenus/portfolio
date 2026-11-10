@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SiteBackground } from "@/components/site-background"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { SiteNav } from "@/components/site-nav"
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'})
@@ -27,9 +27,9 @@ export default function RootLayout({
       <body className="relative min-h-svh">
         <SiteBackground />
         <ThemeProvider>
-          <div className="fixed top-4 right-4 z-50">
-            <ThemeToggle />
-          </div>
+          <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
+            <SiteNav />
+          </header>
           <div className="relative z-10">{children}</div>
         </ThemeProvider>
       </body>
