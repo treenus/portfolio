@@ -68,7 +68,7 @@ const PROJECTS: Project[] = [
     year: "2026",
     yearISO: "2026",
     description: "I was enlisted to assist in the development of a 'bridge controller' to enable our robot to perform pick-and-place tasks. I designed and implemented a STM32-based controller to interface with the robot and the EOAT's motor, enabling much faster cycling and precise control than the previous solution.",
-    photosLabel: "Miscellaenous photos of the controller and its components",
+    photosLabel: "Miscellaneous photos of the controller and its components",
     photos: [
       { image: "/assets/movement/st-photos/IMG_2552.jpg", label: "STM dev board" },
       { image: "/assets/movement/st-photos/IMG_2611.jpg", label: "Stepper Driver" },
