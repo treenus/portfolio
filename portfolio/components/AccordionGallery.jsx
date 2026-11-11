@@ -5,6 +5,20 @@ import { gsap } from 'gsap';
 
 import './AccordionGallery.css';
 
+/**
+ * Prop type for `items` is inferred from this default, so every optional field
+ * must be optional here — otherwise callers are forced to pass `link`/`poster`/etc.
+ * @typedef {{
+ *   image: string,
+ *   label: string,
+ *   link?: string,
+ *   alt?: string,
+ *   type?: 'image' | 'video',
+ *   poster?: string
+ * }} GalleryItem
+ */
+
+/** @type {GalleryItem[]} */
 const DEFAULT_ITEMS = [
   { image: 'https://picsum.photos/id/1015/900/1200', label: 'Canyon', link: '#' },
   { image: 'https://picsum.photos/id/1018/900/1200', label: 'Ridgeline', link: '#' },
@@ -198,6 +212,10 @@ const AccordionGallery = ({
       {items.map((item, i) => {
         const isActive = i === active;
         const Tag = item.link ? 'a' : 'div';
+        // Videos are detected by extension so callers don't have to tag every
+        // item; an explicit `type: 'video'` also works for extensionless URLs.
+        const isVideo =
+          item.type === 'video' || /\.(mp4|webm|mov|m4v|ogv)$/i.test(item.image || '');
         return (
           <Tag
             key={i}
@@ -216,7 +234,27 @@ const AccordionGallery = ({
           >
             <span className="ag-panel__frame">
               <span className="ag-panel__media" ref={el => (mediaRefs.current[i] = el)}>
-                <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
+                {isVideo ? (
+                  <video
+                    src={item.image}
+                    poster={item.poster}
+                    // Always silent: these are ambient clips with machine noise
+                    // and speech. `muted` also satisfies browser autoplay policy —
+                    // unmuted autoplay is blocked, so the clip would never start.
+                    muted
+                    loop
+                    playsInline
+                    // Block routes that could send audio to another device
+                    // (AirPlay / Cast) or into picture-in-picture.
+                    disablePictureInPicture
+                    disableRemotePlayback
+                    autoPlay={isActive}
+                    preload="metadata"
+                    aria-label={item.alt || item.label || ''}
+                  />
+                ) : (
+                  <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
+                )}
               </span>
               <span className="ag-panel__overlay" aria-hidden="true" />
             </span>
