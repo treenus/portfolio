@@ -19,8 +19,7 @@ This site is deployed on Netlify and handles routing automatically.
 this site should be tested locally with 'npm run dev' post Next.js implementation. old html will be ported. 
 
 ## AI
-Heavily produced with the help of LLMs: Kimi K3, Qwen 3.8-Max, Deepseek 4.1 Flash 
-4.1 flash has been surprising me as of late, the entire port to js and integration of reactbits has been incredible. 
+Heavily produced in collaboration with following LLMs: Kimi K3, Qwen 3.8-Max, Deepseek 4.1 Flash 
 
 ## Credits
 color from Sanzo Wada Combinations (plus some accents/accessibility colors)

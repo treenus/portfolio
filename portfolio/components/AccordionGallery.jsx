@@ -53,6 +53,7 @@ const AccordionGallery = ({
   const mediaRefs = useRef([]);
   const barRefs = useRef([]);
   const textRefs = useRef([]);
+  const videoRefs = useRef([]);
   const tlRef = useRef(null);
   const firstRunRef = useRef(true);
   const mediaSizeRef = useRef(320);
@@ -163,9 +164,49 @@ const AccordionGallery = ({
     firstRunRef.current = false;
   }, [applyLayout]);
 
+  // Drive video playback imperatively.
+  //
+  // The `autoPlay` attribute is only honoured when the element is first parsed;
+  // React flipping it later on an already-mounted <video> is unreliable, so the
+  // clip stayed paused even though the attribute was present. Calling play()/
+  // pause() is what actually works. Videos are always muted, so play() satisfies
+  // the browser autoplay policy and won't be blocked.
+  useEffect(() => {
+    const videos = videoRefs.current;
+    if (!videos.length) return;
+
+    let cancelled = false;
+
+    videos.forEach((video, i) => {
+      if (!video) return;
+      if (i === active) {
+        const attempt = video.play();
+        // play() rejects if the element is removed or the source swaps mid-call;
+        // that's benign here, so swallow it rather than surfacing an unhandled
+        // promise rejection in the console.
+        if (attempt && typeof attempt.catch === 'function') {
+          attempt.catch(() => {});
+        }
+      } else {
+        video.pause();
+        try {
+          video.currentTime = 0;
+        } catch {
+          // Seeking can throw before metadata loads; harmless.
+        }
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [active, count]);
+
   useEffect(
     () => () => {
       tlRef.current?.kill();
+      // Stop playback before unmount so audio/video decoding doesn't linger.
+      videoRefs.current.forEach(video => video && video.pause());
     },
     []
   );
@@ -236,6 +277,7 @@ const AccordionGallery = ({
               <span className="ag-panel__media" ref={el => (mediaRefs.current[i] = el)}>
                 {isVideo ? (
                   <video
+                    ref={el => (videoRefs.current[i] = el)}
                     src={item.image}
                     poster={item.poster}
                     // Always silent: these are ambient clips with machine noise
@@ -248,7 +290,6 @@ const AccordionGallery = ({
                     // (AirPlay / Cast) or into picture-in-picture.
                     disablePictureInPicture
                     disableRemotePlayback
-                    autoPlay={isActive}
                     preload="metadata"
                     aria-label={item.alt || item.label || ''}
                   />
