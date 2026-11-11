@@ -1,6 +1,14 @@
 import AccordionGallery from "@/components/AccordionGallery"
 import GlassSurface from "@/components/GlassSurface"
 
+type Media = {
+  image: string
+  label: string
+  /** Optional: 'video' is inferred from the file extension when omitted. */
+  type?: "image" | "video"
+  poster?: string
+}
+
 type Project = {
   title: string
   company: string
@@ -8,7 +16,11 @@ type Project = {
   yearISO: string
   description: string
   photosLabel: string
-  photos: { image: string; label: string }[]
+  /**
+   * Order here is the order shown in the accordion, left to right.
+   * The first entry is the one expanded on load (see `defaultIndex` below).
+   */
+  photos: Media[]
 }
 
 const PROJECTS: Project[] = [
@@ -22,6 +34,7 @@ const PROJECTS: Project[] = [
     photosLabel: "Before/After",
     photos: [
       { image: "/assets/IMG_2592.jpg", label: "Check-in Paper Sheet" },
+      { image: "/assets/movement/IMG_2653.jpg", label: "Proof of Concept" },
       { image: "/assets/IMG_2689.jpg", label: "Check-in App Homepage" },
     ],
   },
@@ -32,14 +45,35 @@ const PROJECTS: Project[] = [
     yearISO: "2025-26",
     description:
       "During my first stint at Modal, I spent some time using this machine, and found it had numerous shortcomings. I then formulated a plan to revitalize the machine with a modern controller and presented it to my leadership. This is the result!",
-    photosLabel: "Some Pictures",
+    photosLabel: "Development Scrapbook:",
     photos: [
-      { image: "/assets/IMG_2673.jpg", label: "Printing in Action!" },
-      { image: "/assets/IMG_2670.jpg", label: "Better view of buildplate" },
-      { image: "/assets/IMG_2567.jpg", label: "View of new motherboard" },
-      { image: "/assets/IMG_2597.jpg", label: "Leveling with software (Revolutionary)" },
+      { image: "/assets/movement/bot-photos/IMG_1880_2.jpg", label: "Factory Mainboard" },
+      { image: "/assets/IMG_2567.jpg", label: "New Mainboard" },
+      { image: "/assets/movement/bot-photos/IMG_2350.jpg", label: "New Toolhead Wiring" },
+      { image: "/assets/movement/bot-photos/IMG_1988.jpg", label: "First Boot!" },
+      { image: "/assets/movement/bot-photos/IMG_2365.jpg", label: "Initial Fan Duct Design" },
+      { image: "/assets/movement/bot-photos/IMG_2378.jpg", label: "Section of Duct ~10" },
+      { image: "/assets/movement/bot-photos/IMG_2464.jpg", label: "Near-Final Model" },
       { image: "/assets/IMG_2491.jpg", label: "Fan Duct Iterations" },
+      { image: "/assets/IMG_2597.jpg", label: "Leveling with software (Revolutionary)" },
+      { image: "/assets/IMG_2673.jpg", label: "Printing" },
+      { image: "/assets/IMG_2670.jpg", label: "Better view of buildplate" },
       { image: "/assets/IMG_2690.jpg", label: "First Successful Print" },
+      { image: "/assets/IMG_2671.mp4", label: "Printing in Motion", type: "video" },
+    ],
+  },
+  {
+    title: "FANUC SR3iA Custom EOAT Controller",
+    company: "Modal Motors",
+    year: "2026",
+    yearISO: "2026",
+    description: "I was enlisted to assist in the development of a 'bridge controller' to enable our robot to perform pick-and-place tasks. I designed and implemented a STM32-based controller to interface with the robot and the EOAT's motor, enabling much faster cycling and precise control than the previous solution.",
+    photosLabel: "Miscellaneous photos of the controller and its components",
+    photos: [
+      { image: "/assets/movement/st-photos/IMG_2552.jpg", label: "STM dev board" },
+      { image: "/assets/movement/st-photos/IMG_2611.jpg", label: "Stepper Driver" },
+      { image: "/assets/movement/st-photos/IMG_2612.jpg", label: "Diagram of STM32 interaction" },
+      { image: "/assets/movement/st-photos/IMG_2625.jpg", label: "Alpha EOAT" },
     ],
   },
 ]
