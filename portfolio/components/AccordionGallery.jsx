@@ -187,6 +187,9 @@ const AccordionGallery = ({
         '--ag-text': textColor,
         '--ag-gap': `${gap}px`,
         '--ag-radius': `${radius}px`,
+        // Exposed so the mobile (stacked) layout can animate its min-height in
+        // step with the GSAP timeline instead of hardcoding a second duration.
+        '--ag-duration': `${duration}s`,
         height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px`
       }}
       role="list"
